@@ -502,6 +502,8 @@ static struct BurnRomInfo Darius2dRomDesc[] = {
 	
 	{ "c07-13.37",     0x00400, 0x3ca18eb3, BRF_OPT },
 	{ "c07-14.38",     0x00400, 0xbaf2a193, BRF_OPT },
+	{ "c07-03.47",     0x80000, 0x189bafce, BRF_OPT },
+	{ "c07-04.48",     0x80000, 0x50421e81, BRF_OPT },
 };
 
 STD_ROM_PICK(Darius2d)
@@ -531,6 +533,8 @@ static struct BurnRomInfo Darius2doRomDesc[] = {
 	
 	{ "c07-13.37",     0x00400, 0x3ca18eb3, BRF_OPT },
 	{ "c07-14.38",     0x00400, 0xbaf2a193, BRF_OPT },
+	{ "c07-03.47",     0x80000, 0x189bafce, BRF_OPT },
+	{ "c07-04.48",     0x80000, 0x50421e81, BRF_OPT },
 };
 
 STD_ROM_PICK(Darius2do)
@@ -611,6 +615,10 @@ static struct BurnRomInfo Ninjaw1RomDesc[] = {
 	
 	{ "b31-25.38",     0x00200, 0xa0b4ba48, BRF_OPT },
 	{ "b31-26.58",     0x00200, 0x13e5fe15, BRF_OPT },
+	{ "b31-01.26",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.27",     0x80000, 0x4c3b4e33, BRF_OPT },
+	{ "b31-01.28",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.29",     0x80000, 0x4c3b4e33, BRF_OPT },
 };
 
 STD_ROM_PICK(Ninjaw1)
@@ -651,6 +659,10 @@ static struct BurnRomInfo NinjawjRomDesc[] = {
 	
 	{ "b31-25.38",     0x00200, 0xa0b4ba48, BRF_OPT },
 	{ "b31-26.58",     0x00200, 0x13e5fe15, BRF_OPT },
+	{ "b31-01.26",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.27",     0x80000, 0x4c3b4e33, BRF_OPT },
+	{ "b31-01.28",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.29",     0x80000, 0x4c3b4e33, BRF_OPT },
 };
 
 STD_ROM_PICK(Ninjawj)
@@ -691,6 +703,10 @@ static struct BurnRomInfo NinjawuRomDesc[] = {
 	
 	{ "b31-25.38",     0x00200, 0xa0b4ba48, BRF_OPT },
 	{ "b31-26.58",     0x00200, 0x13e5fe15, BRF_OPT },
+	{ "b31-01.26",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.27",     0x80000, 0x4c3b4e33, BRF_OPT },
+	{ "b31-01.28",     0x80000, 0x8e8237a7, BRF_OPT },
+	{ "b31-02.29",     0x80000, 0x4c3b4e33, BRF_OPT },
 };
 
 STD_ROM_PICK(Ninjawu)
