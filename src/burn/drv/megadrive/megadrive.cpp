@@ -4308,6 +4308,9 @@ static void OPTIMIZE_ATTR PrepareSprites(INT32 full)
 			if(!link) break; // End of sprites
 		}
 		SpriteBlocks |= sblocks;
+#ifdef __PFBA__
+        *pd = 0; // terminate
+#endif
 	} else {
 		for (; u < 80; u++) {
 			UINT32 *sprite;
@@ -4577,6 +4580,45 @@ static INT32 PicoLine(INT32 /*scan*/)
 
 INT32 MegadriveDraw()
 {
+#ifdef __PFBA__
+    UINT8 *pDest = pBurnDraw;
+    UINT8 *pSrc = NULL;
+
+    if ((RamVReg->reg[12]&1) || !(MegadriveDIP[1] & 0x03)) {
+        for (INT32 j=0; j < 224*2; j++) {
+            pSrc = (UINT8 *)LineBuf + (j * 320);
+            for (INT32 i = 0; i < 320; i++) {
+                pDest[i] = pSrc[i];
+            }
+            pDest += 320;
+        }
+    } else {
+        if (( MegadriveDIP[1] & 0x03 ) == 0x01 ) {
+            // Center
+            for (INT32 j = 0; j < 224; j++) {
+                pSrc = (UINT8 *)LineBuf + (j * 320 *2);
+                memset(pDest, 0, 32+32);
+                memcpy(pDest+32+32, pSrc, (320-32-32)*2);
+                memset(pDest+((320*2)-32-32), 0, 32+32);
+                pDest += 320*2;
+            }
+        } else {
+            // Zoom
+            for (INT32 j = 0; j < 224; j++) {
+                UINT16 *ppSrc = LineBuf + (j * 320);
+                UINT32 delta = 0;
+                for (INT32 i = 0; i < 320; i++)
+                {
+                    pDest[i] = ppSrc[delta >> 16];	///255	///TO BE TESTED !
+                    delta += 0xCCCC;
+                }
+                pDest += 320;
+            }
+        }
+    }
+
+    memset(LineBuf, 0, 320 * 320 * sizeof(UINT16));
+#else
 	if (bMegadriveRecalcPalette) {
 	    for (INT32 i=0; i< 0x40; i++)
 			CalcCol(i, BURN_ENDIAN_SWAP_INT16(RamPal[i]));
@@ -4625,7 +4667,7 @@ INT32 MegadriveDraw()
 		}
 
 	}
-
+#endif
 	return 0;
 }
 
